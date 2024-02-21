@@ -1,15 +1,14 @@
 {
-  "collectionName": "components_about_page_buttons",
+  "collectionName": "components_elements_button_links",
   "info": {
-    "displayName": "button",
-    "description": ""
+    "displayName": "Button Link"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
     },
-    "btnLink": {
+    "link": {
       "type": "string"
     }
   }

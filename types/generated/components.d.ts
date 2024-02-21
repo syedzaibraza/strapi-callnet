@@ -1,37 +1,48 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface AboutPageButton extends Schema.Component {
-  collectionName: 'components_about_page_buttons';
+export interface BlocksContent extends Schema.Component {
+  collectionName: 'components_blocks_contents';
   info: {
-    displayName: 'button';
+    displayName: 'content';
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    btnLink: Attribute.String;
+    heading: Attribute.String;
+    description: Attribute.Text;
+    link: Attribute.Component<'elements.button-link'>;
+    image: Attribute.Media;
   };
 }
 
-export interface AboutPageContent extends Schema.Component {
-  collectionName: 'components_about_page_contents';
+export interface ElementsButtonLink extends Schema.Component {
+  collectionName: 'components_elements_button_links';
   info: {
-    displayName: 'content';
-    icon: 'information';
-    description: '';
+    displayName: 'Button Link';
   };
   attributes: {
     title: Attribute.String;
-    description: Attribute.Blocks;
-    button: Attribute.Component<'about-page.button'>;
-    image: Attribute.Media;
+    link: Attribute.String;
+  };
+}
+
+export interface SeoMetaData extends Schema.Component {
+  collectionName: 'components_seo_meta_data';
+  info: {
+    displayName: 'Meta Data';
+  };
+  attributes: {
+    metaTitle: Attribute.String;
+    metaDescription: Attribute.Text;
+    metaImage: Attribute.Media;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'about-page.button': AboutPageButton;
-      'about-page.content': AboutPageContent;
+      'blocks.content': BlocksContent;
+      'elements.button-link': ElementsButtonLink;
+      'seo.meta-data': SeoMetaData;
     }
   }
 }
