@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faqs_pages",
+  "info": {
+    "singularName": "faqs-page",
+    "pluralName": "faqs-pages",
+    "displayName": "Faqs Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question_answer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.faqs"
+    }
+  }
+}

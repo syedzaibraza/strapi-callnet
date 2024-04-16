@@ -14,6 +14,17 @@ export interface BlocksContent extends Schema.Component {
   };
 }
 
+export interface BlocksFaqs extends Schema.Component {
+  collectionName: 'components_blocks_faqs';
+  info: {
+    displayName: 'Faqs';
+  };
+  attributes: {
+    question: Attribute.String;
+    answer: Attribute.Blocks;
+  };
+}
+
 export interface ElementsButtonLink extends Schema.Component {
   collectionName: 'components_elements_button_links';
   info: {
@@ -41,6 +52,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'blocks.content': BlocksContent;
+      'blocks.faqs': BlocksFaqs;
       'elements.button-link': ElementsButtonLink;
       'seo.meta-data': SeoMetaData;
     }

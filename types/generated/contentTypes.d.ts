@@ -362,41 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiLandingPageLandingPage extends Schema.CollectionType {
-  collectionName: 'landing_pages';
-  info: {
-    singularName: 'landing-page';
-    pluralName: 'landing-pages';
-    displayName: 'landing-page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    slug: Attribute.UID<'api::landing-page.landing-page', 'title'>;
-    metadata: Attribute.Component<'seo.meta-data'>;
-    blocks: Attribute.DynamicZone<['blocks.content']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -816,6 +781,156 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaqsPageFaqsPage extends Schema.CollectionType {
+  collectionName: 'faqs_pages';
+  info: {
+    singularName: 'faqs-page';
+    pluralName: 'faqs-pages';
+    displayName: 'Faqs Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question_answer: Attribute.Component<'blocks.faqs', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faqs-page.faqs-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faqs-page.faqs-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLandingPageLandingPage extends Schema.CollectionType {
+  collectionName: 'landing_pages';
+  info: {
+    singularName: 'landing-page';
+    pluralName: 'landing-pages';
+    displayName: 'landing-page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    slug: Attribute.UID<'api::landing-page.landing-page', 'title'>;
+    metadata: Attribute.Component<'seo.meta-data'>;
+    blocks: Attribute.DynamicZone<['blocks.content']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
+  collectionName: 'privacy_policies';
+  info: {
+    singularName: 'privacy-policy';
+    pluralName: 'privacy-policies';
+    displayName: 'Privacy Policy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTermsAndConditionTermsAndCondition
+  extends Schema.CollectionType {
+  collectionName: 'terms_and_conditions';
+  info: {
+    singularName: 'terms-and-condition';
+    pluralName: 'terms-and-conditions';
+    displayName: 'Terms & Condition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    test: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    singularName: 'test';
+    pluralName: 'tests';
+    displayName: 'test';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    testRich: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -826,7 +941,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -835,6 +949,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::faqs-page.faqs-page': ApiFaqsPageFaqsPage;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
+      'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;
+      'api::test.test': ApiTestTest;
     }
   }
 }
