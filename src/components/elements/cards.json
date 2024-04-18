@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_elements_button_links",
+  "collectionName": "components_elements_cards",
   "info": {
-    "displayName": "Button Link",
+    "displayName": "cards",
     "description": ""
   },
   "options": {},
@@ -9,18 +9,22 @@
     "title": {
       "type": "string"
     },
-    "link": {
+    "description": {
       "type": "string"
     },
-    "icon": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "subTitle": {
+      "type": "string"
     }
   }
 }

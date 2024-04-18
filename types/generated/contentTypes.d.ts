@@ -781,6 +781,69 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutAbout extends Schema.CollectionType {
+  collectionName: 'abouts';
+  info: {
+    singularName: 'about';
+    pluralName: 'abouts';
+    displayName: 'About';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Attribute.Component<'blocks.content', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactUsContactUs extends Schema.CollectionType {
+  collectionName: 'contact_uses';
+  info: {
+    singularName: 'contact-us';
+    pluralName: 'contact-uses';
+    displayName: 'Contact US';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    description: Attribute.String;
+    contacts: Attribute.Component<'elements.social-links', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-us.contact-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-us.contact-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqsPageFaqsPage extends Schema.CollectionType {
   collectionName: 'faqs_pages';
   info: {
@@ -812,121 +875,85 @@ export interface ApiFaqsPageFaqsPage extends Schema.CollectionType {
   };
 }
 
-export interface ApiLandingPageLandingPage extends Schema.CollectionType {
-  collectionName: 'landing_pages';
+export interface ApiFooterFooter extends Schema.CollectionType {
+  collectionName: 'footers';
   info: {
-    singularName: 'landing-page';
-    pluralName: 'landing-pages';
-    displayName: 'landing-page';
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    social: Attribute.Component<'elements.social-links', true>;
+    address: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeHome extends Schema.CollectionType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: 'Home';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    slug: Attribute.UID<'api::landing-page.landing-page', 'title'>;
-    metadata: Attribute.Component<'seo.meta-data'>;
-    blocks: Attribute.DynamicZone<['blocks.content']>;
+    heading: Attribute.Component<'elements.heading', true>;
+    description: Attribute.String;
+    image: Attribute.Media;
+    coverage: Attribute.Component<'blocks.content'>;
+    benefits: Attribute.Component<'elements.cards', true>;
+    benefitsTitle: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
 
-export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
-  collectionName: 'privacy_policies';
+export interface ApiShopShop extends Schema.CollectionType {
+  collectionName: 'shops';
   info: {
-    singularName: 'privacy-policy';
-    pluralName: 'privacy-policies';
-    displayName: 'Privacy Policy';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    text: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::privacy-policy.privacy-policy',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::privacy-policy.privacy-policy',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTermsAndConditionTermsAndCondition
-  extends Schema.CollectionType {
-  collectionName: 'terms_and_conditions';
-  info: {
-    singularName: 'terms-and-condition';
-    pluralName: 'terms-and-conditions';
-    displayName: 'Terms & Condition';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    test: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::terms-and-condition.terms-and-condition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::terms-and-condition.terms-and-condition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
-  info: {
-    singularName: 'test';
-    pluralName: 'tests';
-    displayName: 'test';
+    singularName: 'shop';
+    pluralName: 'shops';
+    displayName: 'Shop';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    testRich: Attribute.RichText;
+    title: Attribute.Component<'elements.heading', true>;
+    description: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<'api::shop.shop', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<'api::shop.shop', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -949,11 +976,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about.about': ApiAboutAbout;
+      'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::faqs-page.faqs-page': ApiFaqsPageFaqsPage;
-      'api::landing-page.landing-page': ApiLandingPageLandingPage;
-      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
-      'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;
-      'api::test.test': ApiTestTest;
+      'api::footer.footer': ApiFooterFooter;
+      'api::home.home': ApiHomeHome;
+      'api::shop.shop': ApiShopShop;
     }
   }
 }

@@ -29,10 +29,51 @@ export interface ElementsButtonLink extends Schema.Component {
   collectionName: 'components_elements_button_links';
   info: {
     displayName: 'Button Link';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     link: Attribute.String;
+    icon: Attribute.Media;
+  };
+}
+
+export interface ElementsCards extends Schema.Component {
+  collectionName: 'components_elements_cards';
+  info: {
+    displayName: 'cards';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.String;
+    image: Attribute.Media;
+    subTitle: Attribute.String;
+  };
+}
+
+export interface ElementsHeading extends Schema.Component {
+  collectionName: 'components_elements_headings';
+  info: {
+    displayName: 'heading';
+    description: '';
+  };
+  attributes: {
+    color: Attribute.Boolean;
+    title: Attribute.String;
+  };
+}
+
+export interface ElementsSocialLinks extends Schema.Component {
+  collectionName: 'components_elements_social_links';
+  info: {
+    displayName: 'Social Links';
+    description: '';
+  };
+  attributes: {
+    logo: Attribute.Media;
+    link: Attribute.String;
+    type: Attribute.String;
   };
 }
 
@@ -54,6 +95,9 @@ declare module '@strapi/types' {
       'blocks.content': BlocksContent;
       'blocks.faqs': BlocksFaqs;
       'elements.button-link': ElementsButtonLink;
+      'elements.cards': ElementsCards;
+      'elements.heading': ElementsHeading;
+      'elements.social-links': ElementsSocialLinks;
       'seo.meta-data': SeoMetaData;
     }
   }
